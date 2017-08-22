@@ -46,7 +46,7 @@ class UserController extends Zend_Controller_Action {
         if ($this->getRequest()->isPost()) {  //Pokud metoda isPost() na objektu requestu vrací true, tak byl formulář odeslán
             $formData = $this->getRequest()->getPost(); //pomocí getPost() získáme data
             if ($form->isValid($formData)) {    //pomocí isValid() ověříme, že jsou data správná
-                $id = $form->getValue('Id');
+                $id = $form->getValue('UserId');
                 $name = $form->getValue('Name'); //hodnota z new Zend_Form_Element_Text('Name')
                 $surname = $form->getValue('Surname');
 
@@ -59,7 +59,7 @@ class UserController extends Zend_Controller_Action {
             $item = new Application_Model_DbTable_Country();
             $selectItem = $this->_getParam('UserId', 0); // zjištění id
             $data = $item->findPrimaryKey($selectItem);
-            $form->populate($data->toArray());
+           // $form->populate($data->toArray());
         }
     }
 

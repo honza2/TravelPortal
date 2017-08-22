@@ -7,7 +7,7 @@ class Application_Form_User extends Zend_Form {
         $this->setName('user')
                 ->setMethod('post');
 
-      $id = new Zend_Form_Element_Hidden('id'); //použij pokud bude id a nechceš ho zobrazovat
+      $id = new Zend_Form_Element_Hidden('UserId'); //použij pokud bude id a nechceš ho zobrazovat
         $id->addFilter('Int') //Chceme aby to bylo pouze číslo
            ->removeDecorator('label')
            ->removeDecorator('HtmlTag'); 
