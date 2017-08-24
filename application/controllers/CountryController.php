@@ -57,6 +57,7 @@ class UserController extends Zend_Controller_Action {
                 // $this->_helper->redirector('user'); //přesměrování na list-of-users
             }
         } else {
+            
             $item = new Application_Model_DbTable_Country();
             $selectItem = $this->_getParam('id', 0); // zjištění id
             $data = $item->findPrimaryKey($selectItem);

@@ -1,3 +1,4 @@
+
 <h2>seznam uživatelů</h2>
 <?php foreach ($this->users as $key => $value) { ?> 
         <tbody> 
@@ -5,8 +6,14 @@
                 <td><?php print $value ['Name']; ?></td> 
                 <td><?php print $value ['Surname']; ?></td> 
 
-               <td class="edit-btn"><a href="<?php echo $this->url(array('controller' => 'User', 'action' => 'edit-users', 'Id' => $value ['UserId'])); ?>"><i class="edit"></i>Edit</a></td> 
-<!--                <td class="delete-btn"><a href="<?php echo $this->url(array('controller' => 'User', 'action' => 'delete', 'Id' => $value ['id'])); ?>"><i class="fa fa-trash"></i></a></td>--><br>
+               <td class="edit-btn"><a href="<?php echo $this->url(array('controller' => 'User', 'action' => 'edit-users', 'id' => $value ['UserId'])); ?>"><i class="edit"></i>Edit</a></td> 
+                <td class="delete-btn"><a href="<?php echo $this->url(array('controller' => 'User', 'action' => 'delete-users', 'id' => $value ['UserId'])); ?>"><i class="fa fa-trash"></i>delete</a></td><br>
               
               </tr>    
          <?php } ?>
+
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>User</b> and script/action name <b>fetchAllUsers</b></p>
+</div>
+

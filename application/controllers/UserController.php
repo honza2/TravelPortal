@@ -11,7 +11,7 @@ class UserController extends Zend_Controller_Action {
     }
 
     public function fetchAllUsersAction() {
-        $dbuser = new Application_Model_DbTable_Country();
+        $dbuser = new Application_Model_DbTable_User();
         $user = $dbuser->fetchAllItems();
         $this->view->users = $user;     // předání kolekce do view. je to klíčové slovo co zavolám ve view
     }
@@ -28,7 +28,7 @@ class UserController extends Zend_Controller_Action {
                 $surname = $form->getValue('Surname');
 
 
-                $user = new Application_Model_DbTable_Country();
+                $user = new Application_Model_DbTable_User();
                 $user->addUser($name, $surname);
                 //  $this->_helper->flashMessenger->addMessage('Bylo přidáno nové pravidlo');
                 // $this->_helper->redirector('user'); //přesměrování na list-of-users
@@ -37,7 +37,17 @@ class UserController extends Zend_Controller_Action {
             }
         }
     }
-
+    public function deleteUsersAction() {
+        $form = new Application_Form_User();
+        $form->submit->setLabel('smazat');
+        $this->view->userDeleteForm = $form;
+        $item = new Application_Model_DbTable_User();
+        $selectItem = $this->_getParam('id', 0); // zjištění id
+        $data = $item->findPrimaryKey($selectItem);
+        $form->populate($data->toArray());
+        $item->deleteUser($selectItem);
+        
+    }
     public function editUsersAction() {
         $form = new Application_Form_User();
         $form->submit->setLabel('změnit');
@@ -50,17 +60,26 @@ class UserController extends Zend_Controller_Action {
                 $name = $form->getValue('Name'); //hodnota z new Zend_Form_Element_Text('Name')
                 $surname = $form->getValue('Surname');
 
-                $user = new Application_Model_DbTable_Country();
+                $user = new Application_Model_DbTable_User();
                 $user->editUser($id, $name, $surname);
                 //  $this->_helper->flashMessenger->addMessage('Bylo přidáno nové pravidlo');
                 // $this->_helper->redirector('user'); //přesměrování na list-of-users
             }
         } else {
-            $item = new Application_Model_DbTable_Country();
-            $selectItem = $this->_getParam('UserId', 0); // zjištění id
+            $item = new Application_Model_DbTable_User();
+            $selectItem = $this->_getParam('id', 0); // zjištění id v uvozovkách id proměnná z formuláře ne z db!
             $data = $item->findPrimaryKey($selectItem);
-           // $form->populate($data->toArray());
+            $form->populate($data->toArray());
         }
     }
 
 }
+
+
+
+
+
+
+
+
+

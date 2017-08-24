@@ -1,13 +1,14 @@
 <?php
 
-class Application_Model_DbTable_Country extends Zend_Db_Table_Abstract
+
+class Application_Model_DbTable_User extends Zend_Db_Table_Abstract
 {
 
     protected $_name = 'user';   //jméno tabulky
     protected $_Id = 'Id';      // jméno sloupce id
     
     public function findPrimaryKey($id) {
-        return $this->fetchRow($this->select()->where('Id = ?', $id));
+        return $this->fetchRow($this->select()->where('UserId = ?', $id));
     }
     
     public function fetchAllItems(){
@@ -28,9 +29,10 @@ class Application_Model_DbTable_Country extends Zend_Db_Table_Abstract
           'Name' => $name,                    
           'Surname' => $surname        
        );
-     $this->update($data, 'Id = ' . (int) $id );
+     $this->update($data, 'UserId = ' . (int) $id );
+   }
+   public function deleteUser($id){
+       $this->delete('UserId = ' . (int) $id);
    }
     
-
 }
-

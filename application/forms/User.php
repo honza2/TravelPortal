@@ -7,7 +7,7 @@ class Application_Form_User extends Zend_Form {
         $this->setName('user')
                 ->setMethod('post');
 
-      $id = new Zend_Form_Element_Hidden('UserId'); //použij pokud bude id a nechceš ho zobrazovat
+      $id = new Zend_Form_Element_Text('UserId'); //použij pokud bude id a nechceš ho zobrazovat
         $id->addFilter('Int') //Chceme aby to bylo pouze číslo
            ->removeDecorator('label')
            ->removeDecorator('HtmlTag'); 
@@ -38,7 +38,8 @@ class Application_Form_User extends Zend_Form {
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setAttrib('class', 'btn btn-success');
-
+    //    $delete = new Zend_Form_Element_Submit('delete');
+     //   $delete->setAttrib('class', 'btn btn-delete');
         $this->addElements(array($id, $name, $surname, $submit));
     }
 
