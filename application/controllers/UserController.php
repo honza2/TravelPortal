@@ -37,7 +37,7 @@ class UserController extends Zend_Controller_Action {
             }
         }
     }
-    public function deleteUsersAction() {
+/*    public function deleteUsersAction() {
         $form = new Application_Form_User();
         $form->submit->setLabel('smazat');
         $this->view->userDeleteForm = $form;
@@ -47,6 +47,25 @@ class UserController extends Zend_Controller_Action {
         $form->populate($data->toArray());
         $item->deleteUser($selectItem);
         
+    }*/
+    public function deleteUsersAction() {
+        if ($this->getRequest()->isPost()) {    //zjištění zda se má zobrazit potvrzovací form nebo provést mazání
+            $del = $this->getRequest()->getPost('del'); //získá se hodnota z view jestli ano či ne ('del' je hodnota parametru name z view]
+            if ($del == 'Ano') {
+                $item = new Application_Model_DbTable_User();
+                $selectedItem = $item->findPrimaryKey($this->getParam('id')); //bere id z formuláře proto malým
+                $selectedItem->delete();                //netřeba mít metodu v modelu smažeme to takto
+               // $this->_helper->flashMessenger->addMessage('User was deleted');
+                $this->_helper->redirector('fetch-all-users');
+            }
+            if ($del == 'Ne') {
+                $this->_helper->redirector('fetch-all-users');
+            }
+        } else {
+            $id = $this->_getParam('id', 0);    //pomocí getparam zjistím id
+            $item = new Application_Model_DbTable_User();   //instance do modelu abych poté zjistil záznam s uživatelem
+            $this->view->userDeleteForm = $item->findPrimaryKey($id); //předám view
+        }
     }
     public function editUsersAction() {
         $form = new Application_Form_User();

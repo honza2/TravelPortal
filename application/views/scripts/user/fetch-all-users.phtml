@@ -6,8 +6,8 @@
                 <td><?php print $value ['Name']; ?></td> 
                 <td><?php print $value ['Surname']; ?></td> 
 
-               <td class="edit-btn"><a href="<?php echo $this->url(array('controller' => 'User', 'action' => 'edit-users', 'id' => $value ['UserId'])); ?>"><i class="edit"></i>Edit</a></td> 
-                <td class="delete-btn"><a href="<?php echo $this->url(array('controller' => 'User', 'action' => 'delete-users', 'id' => $value ['UserId'])); ?>"><i class="fa fa-trash"></i>delete</a></td><br>
+               <td class="edit-btn"><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'edit-users', 'id' => $value ['UserId'])); ?>"><i class="edit"></i>Edit</a></td> 
+                <td class="delete-btn"><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'delete-users', 'id' => $value ['UserId'])); ?>"><i class="fa fa-trash"></i>delete</a></td><br>
               
               </tr>    
          <?php } ?>
