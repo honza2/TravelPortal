@@ -1,5 +1,6 @@
 
 <h2>seznam uživatelů</h2>
+<?php echo $this->messageRows; ?>
 <?php foreach ($this->users as $key => $value) { ?> 
         <tbody> 
             <tr>                            
@@ -16,4 +17,8 @@
 <div id="view-content">
 	<p>View script for controller <b>User</b> and script/action name <b>fetchAllUsers</b></p>
 </div>
+
+//<?php if ($this->message != ""): ?>  
+            <!--<p>//<?= $this->message; ?></p>-->  
+        //<?php endif; ?>
 

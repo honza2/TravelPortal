@@ -1,0 +1,81 @@
+<?php foreach ($this->users as $key => $value) { ?> 
+        <tbody>
+        <div id="TopFlex">    
+        <div class="user-img">    
+        <img src="<?php print $value ['ImgUrl']; ?>" width="200px" height="200px"/>
+        </div>
+        <div class="user-info">
+         <table>  
+            
+            <tr>
+                <td> Jméno: </td> 
+                <td><?php print $value ['Name']; ?></td> 
+            </tr>
+            <tr>
+                <td> Příjmení: </td> 
+                <td><?php print $value ['Surname']; ?></td>
+                </tr>
+                 <tr>
+                <td> Věk: </td> 
+                <td><?php print $value ['Age']; ?></td>
+                </tr>
+                <tr>
+
+               <td class="edit-btn"><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'edit-users', 'id' => $value ['UserId'])); ?>"><i class="edit"></i>Upravit účet</a></td> 
+               <tr> 
+               <td class="delete-btn"><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'delete-users', 'id' => $value ['UserId'])); ?>"><i class="fa fa-trash"></i>Smazat účet</a></td><br>
+               </tr>
+              </tr> 
+              </table>
+            <div id="user-description">
+            <?php print $value ['Description']; ?>    
+            </div>
+        </div>
+        </div>
+        <div id="example">
+         <script type="text/babel">
+                var nadpis = React.createClass ({
+                 render: function(){
+                     return (<h3>napis vygenerován jako komponenta</h3>);
+                 }   
+                });
+                 ReactDOM.render(
+                            <h1>vygenerováno frameworkem react</h1>,
+                      document.getElementById('example')
+                 );
+                
+
+              </script>
+        </div>
+         <?php } ?>
+        <?php
+        $data = file_get_contents("C:\\wamp\\www\\TravelPortal\\public\\json\\test.json");
+        $data_decoded = json_decode($data);
+        echo '<pre>';
+        print_r($data_decoded);
+        echo '</pre>';
+        ?>
+   <?php
+//        $ret = array();
+//    $ret['stav'] = 0;
+//    $ret['text'] = 'Musíš se přihlásit';
+//    $ret['citat'] = '"Lépe pozdě, než nikdy."';
+//    echo json_encode($ret);
+        ?>
+   <?php
+   //zápis do json funkční
+//    $data = array();
+//    $data['name'] = 'Petr';
+//    $data['surname'] = 'novak';   
+//    echo json_encode($data);
+//   
+//   
+//   
+//   $input = file_get_contents("C:\\wamp\\www\\TravelPortal\\public\\json\\test.json");   
+//   $tempArray = json_decode($input);
+//   $tempArray[] = $data;
+//   $jsonData = json_encode($tempArray);
+//   file_put_contents("C:\\wamp\\www\\TravelPortal\\public\\json\\test.json", $jsonData);
+   ?>
+                
+     

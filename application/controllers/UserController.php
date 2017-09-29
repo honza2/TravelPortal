@@ -3,7 +3,11 @@
 class UserController extends Zend_Controller_Action {
 
     public function init() {
-        /* Initialize action controller here */
+        $messages = $this->_helper->flashMessenger->getMessages();
+        if (!empty($messages)) {
+            $this->_helper->layout->getView()->message = $messages[0]; /// message se předává view
+        
+        }
     }
 
     public function indexAction() {
@@ -11,6 +15,17 @@ class UserController extends Zend_Controller_Action {
     }
 
     public function fetchAllUsersAction() {
+        $dbuser = new Application_Model_DbTable_User();
+        $user = $dbuser->fetchAllItems();
+        $count = count($user);
+
+        if ($count == 0) {
+            $message = 'No rows in table'; 
+             $this->view->messageRows = $message;
+        }
+        $this->view->users = $user;     // předání kolekce do view. je to klíčové slovo co zavolám ve view
+    }
+    public function userAccountAction() {
         $dbuser = new Application_Model_DbTable_User();
         $user = $dbuser->fetchAllItems();
         $this->view->users = $user;     // předání kolekce do view. je to klíčové slovo co zavolám ve view
@@ -30,8 +45,8 @@ class UserController extends Zend_Controller_Action {
 
                 $user = new Application_Model_DbTable_User();
                 $user->addUser($name, $surname);
-                //  $this->_helper->flashMessenger->addMessage('Bylo přidáno nové pravidlo');
-                // $this->_helper->redirector('user'); //přesměrování na list-of-users
+                $this->_helper->flashMessenger->addMessage('Uživatel byl vytvořen');
+                $this->_helper->redirector('fetch-all-users'); //přesměrování na list-of-users,, metoda init musí být v cotrolleru, kde redirektujem
             } else {
                 $form->populate($formData); //Pokud zadaná data nejsou validní, pak jimi naplníme formulář a znovu ho zobrazíme.
             }
@@ -78,9 +93,11 @@ class UserController extends Zend_Controller_Action {
                 $id = $form->getValue('UserId');
                 $name = $form->getValue('Name'); //hodnota z new Zend_Form_Element_Text('Name')
                 $surname = $form->getValue('Surname');
+                $imageId = $form->getValue('ImgUrl');
+                $description = $form->getValue('Description');
 
                 $user = new Application_Model_DbTable_User();
-                $user->editUser($id, $name, $surname);
+                $user->editUser($id, $name, $surname, $imageId, $description);
                 //  $this->_helper->flashMessenger->addMessage('Bylo přidáno nové pravidlo');
                 // $this->_helper->redirector('user'); //přesměrování na list-of-users
             }

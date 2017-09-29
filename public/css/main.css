@@ -1,0 +1,28 @@
+/*menu*/
+nav {height: 150px}
+nav ul {list-style-type: none;}
+ul.navigation li {float: left; width: 100px; margin-left: 100px; margin-bottom: 30px;}
+ul.navigation li a {float: left; width: 100px; height:40px; background-color: blue; border-radius: 10px; color: black; padding-left: 50%; padding-top: 15px;}
+ul.navigation li ul li {margin-top: 70px; margin-left: -150px;}
+/*ul.navigation > li > ul > li  {display: none;}
+ul.navigation li:hover > ul > li {display: block;}
+ul.navigation li:hover > ul:hover li {display: block;}
+ul.navigation li:hover > ul{margin-top: 60px;} */
+
+
+
+
+
+
+
+
+
+
+
+#TopFlex {display: flex; width:100%; margin:auto; background-color: #66ff66;   }
+.user-img img{border-radius: 150px; right: 150px; border: 1px solid black; margin-left:10%}
+.user-img {flex: 1;}
+.user-info {flex: 3;}
+.user-info table {margin:auto; }
+
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<config>
+    <nav>
+        <user>
+            <label>Uživatelé</label>
+            <controller>user</controller>
+            <action>fetch-all-users</action>
+            <pages>
+                <register>
+                    <label>Registrace</label>
+                    <controller>user</controller>
+                    <action>create-users</action>
+                </register>
+            </pages>
+            
+        </user>
+        <country>
+            <label>Země</label>
+            <controller>country</controller>
+            <action>fetch-all-country</action>
+            
+            
+        </country>
+        <travelplan>
+            <label>Cestovní plány</label>
+            <controller>TravelPlan</controller>
+            <action>fetch-all-plans</action>
+            
+            
+        </travelplan>        
+    </nav>>
+</config>

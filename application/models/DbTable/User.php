@@ -24,10 +24,12 @@ class Application_Model_DbTable_User extends Zend_Db_Table_Abstract
        );
        $this->insert($data);
    }
-     public function editUser($id, $name, $surname){
+     public function editUser($id, $name, $surname, $imgUrl, $description){
        $data = array(
           'Name' => $name,                    
-          'Surname' => $surname        
+          'Surname' => $surname,
+           'ImgUrl' => $imgUrl, 
+           'Description'=>$description
        );
      $this->update($data, 'UserId = ' . (int) $id );
    }
