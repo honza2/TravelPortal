@@ -82,6 +82,7 @@ class TravelPlanController extends Zend_Controller_Action {
                 $continent = $form->getValue('Continent');
                 $currency = $form->getValue('Currency');
                 $spend = $form->getValue('SpendMoney');
+                
 
                 $TravelPlan = new Application_Model_DbTable_TravelPlan();
                 $TravelPlan->editPlan($id, $name, $area, $description, $arrive, $departure, $country, $continent, $currency, $spend);

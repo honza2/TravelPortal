@@ -90,14 +90,14 @@ class UserController extends Zend_Controller_Action {
         if ($this->getRequest()->isPost()) {  //Pokud metoda isPost() na objektu requestu vrací true, tak byl formulář odeslán
             $formData = $this->getRequest()->getPost(); //pomocí getPost() získáme data
             if ($form->isValid($formData)) {    //pomocí isValid() ověříme, že jsou data správná
-                $id = $form->getValue('UserId');
+                $id = $form->getValue('UserId');                
                 $name = $form->getValue('Name'); //hodnota z new Zend_Form_Element_Text('Name')
                 $surname = $form->getValue('Surname');
                 $imageId = $form->getValue('ImgUrl');
                 $description = $form->getValue('Description');
-
+                 $password = $form->getValue('Password');
                 $user = new Application_Model_DbTable_User();
-                $user->editUser($id, $name, $surname, $imageId, $description);
+                $user->editUser($id, $name, $surname, $imageId, $description, $password);
                 //  $this->_helper->flashMessenger->addMessage('Bylo přidáno nové pravidlo');
                 // $this->_helper->redirector('user'); //přesměrování na list-of-users
             }
