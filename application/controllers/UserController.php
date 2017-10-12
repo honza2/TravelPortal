@@ -32,7 +32,7 @@ class UserController extends Zend_Controller_Action {
     }
 
     public function createUsersAction() {
-        $form = new Application_Form_User();
+        $form = new Application_Form_User();        
         $form->submit->setLabel('přidat');
         $this->view->userForm = $form;  //userForm je proměnná na kterou přistupuju ve view
 

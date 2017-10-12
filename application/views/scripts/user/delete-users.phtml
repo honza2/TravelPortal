@@ -5,7 +5,7 @@ $this->headTitle($this->title);
 
 <div class="message-info">
     <h3><i class="fa fa-trash-o"></i> Delete</h3><hr>
-    <p>Do you really want to delete the domain <b>R<?php echo $this->escape($this->userDeleteForm['Surname']); ?>?</b></p> 
+    <p>Do you really want to delete the user? <b>R<?php echo $this->escape($this->userDeleteForm['Surname']); ?>?</b></p> 
     <form action="<?php echo $this->url(array('action' => 'delete-users')); ?>" method="post">
         <div> 
             <input type="hidden" name="id" value="<?php echo $this->user['id']; ?>" /> 

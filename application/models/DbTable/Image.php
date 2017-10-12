@@ -4,7 +4,7 @@ class Application_Model_DbTable_Image extends Zend_Db_Table_Abstract
 {
 
     protected $_name = 'image';   //jméno tabulky
-    protected $_Id = 'Id';      // jméno sloupce id
+    protected $_Id = 'ImageId';      // jméno sloupce id
     
     public function findPrimaryKey($id) {
         return $this->fetchRow($this->select()->where('ImageId = ?', $id));

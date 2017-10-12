@@ -11,9 +11,26 @@ $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
         </div>    
     <?php endif; ?>
 <head>
+    <!-- REACT JS -->
     <script src="https://unpkg.com/react@latest/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <!-- KONEC REACT JS -->
+    
+    <!-- winget kalendáře -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <script>
+        
+        $( function() {
+            
+         $( "#Arrive, #Departure" ).datepicker();         
+        } );
+    </script>
+    <!-- konec widgetu kalendáře-->
     <?php
     echo $this->headMeta();
     echo $this->headTitle();
@@ -40,13 +57,21 @@ $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
 
 <header>
     <nav>
-        <?php print $this->navigation()->menu();?>
+        <?php print $this->navigation()->menu()->setMinDepth(0)->setMaxDepth(0);?>
     </nav>
     <?php print $this->navigation()->breadcrumbs(); ?>
 </header>
+<div id="submenu">
+    <?php
+                    //echo $this->navigation()->menu()->setUlClass('nav navbar-nav')->setMinDepth(1)->setMaxDepth(1); 
+                    echo $this->navigation()->menu()->renderMenu(null, array("minDepth" => 1, "maxDepth" => 2, "onlyActiveBranch" => true, "renderParents" => false, 'ulClass' => 'nav navbar-nav horizontal-menu'))
+                    ?>
+</div>
+
 <?php echo $this->layout()->content;
 
 ?>
+
 
 
 

@@ -1,14 +1,32 @@
 <h2>seznam plánů cest</h2>
-//<?php foreach ($this->plans as $key => $value) { ?> 
-<!--        <tbody> 
-            <tr>                            
-                <td>//<?php print $value ['Area']; ?></td> 
-                <td>//<?php print $value ['Arrive']; ?></td> 
-                <td>//<?php print $value ['Departure']; ?></td> 
-                <td>//<?php print $value ['Description']; ?></td>
+<?php// foreach ($this->items as $key => $value) { ?>
+                <!--<p class="animated fadeInUp">Jmenuji se //<//?php print $value ['Name']; ?> <//?php print $value ['Area']; ?>,</p>-->                        
+                    <?php //print $value ['Description']; ?> 
+                <?php //} ?>
+<?php foreach ($this->plans as $key => $value) { ?> 
+<table>    
+    <tbody> 
+            <tr>    
+                <td><?php print $value ['Name']; ?></td>
+                </tr>
+            <tr>
+                <td><?php print $value ['Area']; ?></td> 
+                </tr>
+             <tr>                         
+                <td><?php print $value ['Arrive']; ?></td> 
+                </tr>
+             <tr>   
+                <td><?php print $value ['Departure']; ?></td> 
+                </tr>
+             <tr>   
+                <td><?php print $value ['Description']; ?></td>
+                </tr>
 
-               <td class="edit-btn"><a href="//<?php echo $this->url(array('controller' => 'TravelPlan', 'action' => 'edit-plans', 'Id' => $value ['TravelplanId'])); ?>"><i class="edit"></i>Edit</a></td> 
-        <br>
+               <td class="edit-btn"><a href="<?php echo $this->url(array('controller' => 'Travelplan', 'action' => 'edit-plans', 'Id' => $value ['TravelplanId'])); ?>"><i class="edit"></i>Edit</a></td> 
+               <td class="delete-btn"><a href="<?php echo $this->url(array('controller' => 'Travelplan', 'action' => 'delete-plans', 'Id' => $value ['TravelplanId'])); ?>"><i class="fa fa-trash"></i>delete</a></td>
               
-              </tr>    -->
-         //<?php } ?>
+               <br>
+        </tbody>
+</table>
+                  
+         <?php } ?>

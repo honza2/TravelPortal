@@ -19,7 +19,7 @@ class Application_Form_Image extends Zend_Form {
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty')
-                ->setAttrib('placeholder', 'zadejte jméno')
+                ->setAttrib('placeholder', 'zadejte alt obrázku')
                 ->setAttrib('class', 'form-control') //kaskádový styl
                 ->addErrorMessage('Must contain only digit and dot. Example: 5.1');
         $area = new Zend_Form_Element_Text('Area');       //vytvoření jednoho inputu
@@ -28,7 +28,7 @@ class Application_Form_Image extends Zend_Form {
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty')
-                ->setAttrib('placeholder', 'zadejte příjmení')
+                ->setAttrib('placeholder', 'zadejte oblast')
                 ->setAttrib('class', 'form-control') //kaskádový styl
                 ->addErrorMessage('Must contain only digit and dot. Example: 5.1');
         $description = new Zend_Form_Element_Text('Description');       //vytvoření jednoho inputu
@@ -37,7 +37,7 @@ class Application_Form_Image extends Zend_Form {
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty')
-                ->setAttrib('placeholder', 'zadejte příjmení')
+                ->setAttrib('placeholder', 'zadejte popisek')
                 ->setAttrib('class', 'form-control') //kaskádový styl
                 ->addErrorMessage('Must contain only digit and dot. Example: 5.1');
         $imageName = new Zend_Form_Element_Text('ImageName');       //vytvoření jednoho inputu
@@ -46,10 +46,18 @@ class Application_Form_Image extends Zend_Form {
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty')
-                ->setAttrib('placeholder', 'zadejte příjmení')
+                ->setAttrib('placeholder', 'zadejte název obrázku')
                 ->setAttrib('class', 'form-control') //kaskádový styl
                 ->addErrorMessage('Must contain only digit and dot. Example: 5.1');
-        
+        $url = new Zend_Form_Element_Text('ImgUrl');       //vytvoření jednoho inputu
+        $url ->setLabel('imgUrl')
+                ->setRequired(true)
+                ->addFilter('StripTags')
+                ->addFilter('StringTrim')
+                ->addValidator('NotEmpty')
+                ->setAttrib('placeholder', 'zadejte URL obrázku')
+                ->setAttrib('class', 'form-control') //kaskádový styl
+                ->addErrorMessage('Must contain only digit and dot. Example: 5.1');        
         
        
 
@@ -57,7 +65,7 @@ class Application_Form_Image extends Zend_Form {
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setAttrib('class', 'btn btn-success');
 
-        $this->addElements(array($id, $alt, $description, $imageName));
+        $this->addElements(array($id, $alt, $description, $imageName, $area, $url,$submit));
     }
 
 }

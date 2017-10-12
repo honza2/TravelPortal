@@ -40,7 +40,7 @@ class Application_Form_User extends Zend_Form {
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                
-                ->setAttrib('placeholder', 'zadejte jméno')
+                ->setAttrib('placeholder', 'zadejte URL obrázku')
                 ->setAttrib('class', 'form-control'); //kaskádový styl
             
        
@@ -50,7 +50,7 @@ class Application_Form_User extends Zend_Form {
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 
-                ->setAttrib('placeholder', 'zadejte jméno')
+                ->setAttrib('placeholder', 'zadejte popisek')
                 ->setAttrib('class', 'form-control'); //kaskádový styl
                       
 

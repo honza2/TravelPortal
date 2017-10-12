@@ -8,6 +8,27 @@ and open the template in the editor.
 
 <config>
     <nav>
+        <myprofile>
+            <label>Můj profil</label>
+            <controller>user</controller>
+            <action>user-account</action>
+             <pages>
+                <newplan>
+                    <label>Nový plán</label>
+                    <controller>travelplan</controller>
+                    <action>create-plan</action>
+                </newplan>
+                <addimg>
+                    <label>nový obrázek</label>
+                    <controller>image</controller>
+                    <action>add-img</action>
+                </addimg>
+           
+            </pages>               
+       
+                       
+            
+        </myprofile>
         <user>
             <label>Uživatelé</label>
             <controller>user</controller>
@@ -19,20 +40,28 @@ and open the template in the editor.
                     <action>create-users</action>
                 </register>
             </pages>
+       
+                       
             
         </user>
-        <country>
-            <label>Země</label>
-            <controller>country</controller>
-            <action>fetch-all-country</action>
+        <register>
+            <label>Registrace</label>
+            <controller>user</controller>
+            <action>create-users</action>
             
             
-        </country>
+        </register>
         <travelplan>
             <label>Cestovní plány</label>
-            <controller>TravelPlan</controller>
+            <controller>travelplan</controller>
             <action>fetch-all-plans</action>
-            
+             <pages>
+                <newplan>
+                    <label>Novýpplán</label>
+                    <controller>travelplan</controller>
+                    <action>create-plan</action>
+                </newplan>
+            </pages>           
             
         </travelplan>        
     </nav>>

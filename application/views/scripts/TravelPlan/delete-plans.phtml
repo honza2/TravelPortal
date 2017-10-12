@@ -1,0 +1,16 @@
+<?php
+$this->title = "Smazání cestovatelského plánu";
+$this->headTitle($this->title);
+?>
+
+<div class="message-info">
+    <h3><i class="fa fa-trash-o"></i> Delete</h3><hr>
+    <p>Do you really want to delete the plan? <b>R<?php echo $this->escape($this->planDeleteForm['Name']); ?>?</b></p> 
+    <form action="<?php echo $this->url(array('action' => 'delete-plans')); ?>" method="post">
+        <div> 
+            <input type="hidden" name="id" value="<?php echo $this->planDeleteForm['id']; ?>" /> 
+            <input class="btn btn-danger" type="submit" name="del" value="Ano" /> 
+            <input  class="btn btn-info" type="submit" name="del" value="Ne" />
+        </div>
+    </form>
+</div>

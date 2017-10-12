@@ -1,3 +1,4 @@
+
 <?php foreach ($this->users as $key => $value) { ?> 
         <tbody>
         <div id="TopFlex">    
@@ -32,7 +33,11 @@
             </div>
         </div>
         </div>
-        <div id="example">
+        <div id="fetch-all-plans">
+            <?php echo $this->action('fetch-All-Plans', 'travelplan', $this->items); ?>
+            
+        </div>
+<!--        <div id="example">
          <script type="text/babel">
                 var nadpis = React.createClass ({
                  render: function(){
@@ -46,14 +51,14 @@
                 
 
               </script>
-        </div>
+        </div>-->
          <?php } ?>
         <?php
-        $data = file_get_contents("C:\\wamp\\www\\TravelPortal\\public\\json\\test.json");
-        $data_decoded = json_decode($data);
-        echo '<pre>';
-        print_r($data_decoded);
-        echo '</pre>';
+//        $data = file_get_contents("C:\\wamp\\www\\TravelPortal\\public\\json\\test.json");
+//        $data_decoded = json_decode($data);
+//        echo '<pre>';
+//        print_r($data_decoded);
+//        echo '</pre>';
         ?>
    <?php
 //        $ret = array();
