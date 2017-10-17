@@ -41,10 +41,15 @@ class UserController extends Zend_Controller_Action {
             if ($form->isValid($formData)) {    //pomocí isValid() ověříme, že jsou data správná
                 $name = $form->getValue('Name'); //hodnota z new Zend_Form_Element_Text('Name')
                 $surname = $form->getValue('Surname');
+                $imgUrl = $form->getValue('ImgUrl');
+                $password = $form->getValue('Password');
 
 
                 $user = new Application_Model_DbTable_User();
-                $user->addUser($name, $surname);
+                if (strlen($imgUrl) == 0 ){
+                    $imgUrl = "http://i0.kym-cdn.com/entries/icons/original/000/009/556/jesus-bleu-mauve.jpg";
+                }
+                $user->addUser($name, $surname, $imgUrl, $password);
                 $this->_helper->flashMessenger->addMessage('Uživatel byl vytvořen');
                 $this->_helper->redirector('fetch-all-users'); //přesměrování na list-of-users,, metoda init musí být v cotrolleru, kde redirektujem
             } else {
@@ -97,7 +102,32 @@ class UserController extends Zend_Controller_Action {
                 $description = $form->getValue('Description');
                  $password = $form->getValue('Password');
                 $user = new Application_Model_DbTable_User();
+                if (strlen($imageId) == 0 ){
+                    $imageId = "http://i0.kym-cdn.com/entries/icons/original/000/009/556/jesus-bleu-mauve.jpg";
+                }
                 $user->editUser($id, $name, $surname, $imageId, $description, $password);
+                //  $this->_helper->flashMessenger->addMessage('Bylo přidáno nové pravidlo');
+                // $this->_helper->redirector('user'); //přesměrování na list-of-users
+            }
+        } else {
+            $item = new Application_Model_DbTable_User();
+            $selectItem = $this->_getParam('id', 0); // zjištění id v uvozovkách id proměnná z formuláře ne z db!
+            $data = $item->findPrimaryKey($selectItem);
+            $form->populate($data->toArray());
+        }
+    }
+    public function editUserimgAction() {
+        $form = new Application_Form_UserEditImg();
+        $form->submit->setLabel('změnit');
+        $this->view->userEditImgForm = $form;  //userForm je proměnná na kterou přistupuju ve view
+
+        if ($this->getRequest()->isPost()) {  //Pokud metoda isPost() na objektu requestu vrací true, tak byl formulář odeslán
+            $formData = $this->getRequest()->getPost(); //pomocí getPost() získáme data
+            if ($form->isValid($formData)) {    //pomocí isValid() ověříme, že jsou data správná
+                $id = $form->getValue('UserId');                
+                $url = $form->getValue('ImgUrl'); //hodnota z new Zend_Form_Element_Text('Name')               
+                $user = new Application_Model_DbTable_User();
+                $user->saveImgUrl($id, $url);
                 //  $this->_helper->flashMessenger->addMessage('Bylo přidáno nové pravidlo');
                 // $this->_helper->redirector('user'); //přesměrování na list-of-users
             }
