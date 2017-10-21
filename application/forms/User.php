@@ -44,7 +44,7 @@ class Application_Form_User extends Zend_Form {
 
         $description = new Zend_Form_Element_Text('Description');       //vytvoření jednoho inputu, v uvozovkách tak jak se to jmenuje v db
         $description->setLabel('popis')
-                ->addFilter('StripTags'
+                ->addFilter('StripTags')
                 
                 ->addFilter('StringTrim')
                 ->setAttrib('placeholder', 'zadejte popisek')
