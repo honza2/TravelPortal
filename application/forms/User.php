@@ -44,22 +44,30 @@ class Application_Form_User extends Zend_Form {
 
         $description = new Zend_Form_Element_Text('Description');       //vytvoření jednoho inputu, v uvozovkách tak jak se to jmenuje v db
         $description->setLabel('popis')
-                ->addFilter('StripTags')
+                ->addFilter('StripTags'
+                
                 ->addFilter('StringTrim')
                 ->setAttrib('placeholder', 'zadejte popisek')
                 ->setAttrib('class', 'form-control'); //kaskádový styl
-        $this->addElementPrefixPath('myValidPassword', APPLICATION_PATH . '/../library/Validate', 'myValidPassword');
-        
+        $this->addElementPrefixPath('Zend_Validate_myValidPassword', APPLICATION_PATH . '../Zend/Validate', 'myValidPassword');
+        $classFileIncCache = APPLICATION_PATH . '/../library/Zend/Validate/myValidatePassword.php';
+        if (file_exists($classFileIncCache)) {
+         include_once $classFileIncCache;
+        }
+        Zend_Loader_PluginLoader::setIncludeFileCache($classFileIncCache);
+        $valid = new Zend_Validate_MyValidPassword();
         $password = new Zend_Form_Element_Password('Password');       //vytvoření jednoho inputu, v uvozovkách tak jak se to jmenuje v db
         $password->setLabel('heslo')
                 ->addFilter('StripTags')
                 ->setRequired(true)
                 ->addValidator('NotEmpty')
                 ->setDescription('Heslo musí obsahovat 7 znaků') 
-                 ->addValidator('myValidPassword', true)
-                ->addFilter('StringTrim')
+                // ->addValidator('myValidPassword', true)
+             //   ->addValidator($valid->isValid($this->getElement('Password'), true)
+                ->addFilter('StringTrim')                
                 ->setAttrib('placeholder', 'zadejte heslo')
                 ->setAttrib('class', 'form-control'); //kaskádový styl
+        
         
         $confirmPass = new Zend_Form_Element_Password('ConfirmPassword');       //vytvoření jednoho inputu, v uvozovkách tak jak se to jmenuje v db
         $confirmPass->setLabel('heslo')

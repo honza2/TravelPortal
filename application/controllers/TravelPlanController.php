@@ -81,14 +81,27 @@ class TravelPlanController extends Zend_Controller_Action {
                 $country = $form->getValue('Country');
                 $continent = $form->getValue('Continent');
                 $currency = $form->getValue('Currency');
-                $spend = $form->getValue('SpendMoney');
+                $spend = $form->getValue('SpendMoney'); 
+                $arriveToDate = strtotime($arrive);
+                $arriveD = date('Y-m-d', $arriveToDate);
+                $departureToDate= strtotime($departure);
+                $departureD = date('Y-m-d', $departureToDate);
                 
-
+                if ($arriveD > $departureD){
+                    $_SERVER['PHP_SELF'];
+                    echo('Datum odjezdu menší než datum příjezdu');
+                    
+//                    $url = $_SERVER['REQUEST_URI'];
+//                    $this->_helper->redirector($url);
+                //   $this->_helper->flashMessenger->addMessage('datum odjezdu menší než datum příjezdu');
+                }
+                else{
                 $TravelPlan = new Application_Model_DbTable_TravelPlan();
-                $TravelPlan->editPlan($id, $name, $area, $description, $arrive, $departure, $country, $continent, $currency, $spend);
+                $TravelPlan->editPlan($id, $name, $area, $description, $arriveD, $departureD, $country, $continent, $currency, $spend);
                 
                 $this->_helper->flashMessenger->addMessage('Přidán záznam');
                 $this->_helper->redirector('fetch-all-plans'); //přesměrování na list-of-users
+                }
             }
         } else {
             

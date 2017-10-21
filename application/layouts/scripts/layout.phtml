@@ -25,10 +25,13 @@ $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
     
     <script>
         
-        $( function() {
-            
-         $( "#Arrive, #Departure" ).datepicker();         
-        } );
+
+   $( function() {
+    $(" #Departure,#Arrive").datepicker({
+      format: 'yyyy-mm-dd'
+     
+    });
+     } );
     </script>
     <!-- konec widgetu kalendáře-->
     <?php

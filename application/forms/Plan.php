@@ -40,6 +40,7 @@ class Application_Form_Plan extends Zend_Form {
                 ->setAttrib('class', 'form-control');
         $arrive = new Zend_Form_Element_Text('Arrive');       //vytvoření jednoho inputu
         $arrive->setLabel('arrive')
+                ->setName('Arrive')
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
@@ -48,6 +49,7 @@ class Application_Form_Plan extends Zend_Form {
                 ->setAttrib('class', 'form-control');
         $departure = new Zend_Form_Element_Text('Departure');       //vytvoření jednoho inputu
         $departure->setLabel('departure')
+                ->setName('Departure')                
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')

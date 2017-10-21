@@ -62,3 +62,13 @@ class Zend_Validate_MyValidPassword extends Zend_Validate_Abstract{
         return $isValid;
     }
 }
+//<?php include_once 'Zend/View/Helper/HeadMeta.php'?>
+<?php include_once 'Zend/View/Helper/Doctype.php'?>
+<?php include_once 'Zend/View/Helper/HeadTitle.php'?>
+<?php include_once 'Zend/View/Helper/HeadLink.php'?>
+<?php include_once 'Zend/View/Helper/BaseUrl.php'?>
+<?php include_once 'Zend/View/Helper/Navigation/Menu.php'?>
+<?php include_once 'Zend/Controller/Action/Helper/Url.php'?>
+<?php include_once 'Zend/View/Helper/Navigation/Breadcrumbs.php'?>
+<?php include_once 'Zend/View/Helper/Layout.php'?>
+<?php include_once 'Zend/View/Helper/HeadMeta.php'?>
